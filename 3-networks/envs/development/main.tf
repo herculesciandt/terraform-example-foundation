@@ -17,6 +17,10 @@
 locals {
   environment_code          = "d"
   env                       = "development"
+  default_restricted_services = ["bigquery.googleapis.com", "storage.googleapis.com"]
+  restricted_services = distinct(concat(local.default_restricted_services, var.additional_restricted_services))
+  default_perimeter_members = ["serviceAccount:${var.terraform_service_account}"]
+  perimeter_members = distinct(concat(local.default_perimeter_members, var.additional_perimeter_members))
   restricted_project_id     = data.google_projects.restricted_host_project.projects[0].project_id
   restricted_project_number = data.google_project.restricted_host_project.number
   base_project_id           = data.google_projects.base_host_project.projects[0].project_id
@@ -100,8 +104,8 @@ module "restricted_shared_vpc" {
   project_number                   = local.restricted_project_number
   environment_code                 = local.environment_code
   access_context_manager_policy_id = var.access_context_manager_policy_id
-  restricted_services              = ["bigquery.googleapis.com", "storage.googleapis.com"]
-  members                          = ["serviceAccount:${var.terraform_service_account}"]
+  restricted_services              = local.restricted_services 
+  members 		           = local.perimeter_members
   private_service_cidr             = local.restricted_private_service_cidr
   org_id                           = var.org_id
   parent_folder                    = var.parent_folder

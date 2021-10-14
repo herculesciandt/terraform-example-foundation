@@ -66,7 +66,7 @@ resource "google_compute_firewall" "allow_restricted_api_egress" {
 
   destination_ranges = [local.restricted_googleapis_cidr]
 
-  target_tags = ["allow-google-apis"]
+  target_tags = ["allow-google-apis","dataflow"]
 }
 
 /******************************************

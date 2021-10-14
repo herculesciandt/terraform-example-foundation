@@ -145,3 +145,16 @@ variable "enable_hub_and_spoke_transitivity" {
   type        = bool
   default     = false
 }
+
+variable "additional_perimeter_members" {
+  description = "The list of additional members to be added to the perimeter access level. Prefix user: (user:email@email.com) or serviceAccount: (serviceAccount:my-service-account@email.com)."
+  type        = list(string)
+  default     = []
+}
+
+variable "additional_restricted_services" {
+  description = "The list of additional services to be added to the service perimeter."
+  type        = list(string)
+  default     = []
+}
+

@@ -101,3 +101,13 @@ output "base_subnets_secondary_ranges" {
   value       = module.base_shared_vpc.subnets_secondary_ranges
   description = "The secondary ranges associated with these subnets"
 }
+
+output "members" {
+  value       = local.perimeter_members
+  description = "The list of members of the access level"
+}
+
+output "restricted_services" {
+  value       = local.restricted_services
+  description = "The list of restricted services"
+}

@@ -32,3 +32,23 @@ domain = "example.com."
 //enable_hub_and_spoke = true
 
 //enable_hub_and_spoke_transitivity = true
+
+
+additional_restricted_services = [
+    "bigquery.googleapis.com",
+    "cloudasset.googleapis.com",
+    "cloudfunctions.googleapis.com",
+    "cloudkms.googleapis.com",
+    "compute.googleapis.com",
+    "datacatalog.googleapis.com",
+    "dataflow.googleapis.com",
+    "dlp.googleapis.com",
+    "logging.googleapis.com",
+    "monitoring.googleapis.com",
+    "pubsub.googleapis.com",
+    "secretmanager.googleapis.com",
+    "storage.googleapis.com"
+  ]
+
+//Add additional members to the perimeter (Add yourself here)
+additional_perimeter_members = []
